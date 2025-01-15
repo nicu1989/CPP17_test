@@ -1,0 +1,31 @@
+name: Build and Run
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Bazel
+      uses: bazelbuild/setup-bazel@v4
+      with:
+        bazel-version: 6.0.0
+
+    - name: Build the project
+      run: |
+        bazel build //main:main
+
+    - name: Run the executable
+      run: |
+        ./bazel-bin/main/main
