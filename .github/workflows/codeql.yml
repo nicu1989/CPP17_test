@@ -100,7 +100,7 @@ jobs:
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v3
       with:
-        # packs: advanced-security/misra-cpp-coding-standards-uncertified
+        packs: advanced-security/misra-cpp-coding-standards-uncertified
         languages: ${{ matrix.language }}
         build-mode: ${{ matrix.build-mode }}
         #packs: "./codeql-packs/misra-cpp-coding-standards"
