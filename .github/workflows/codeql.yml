@@ -65,24 +65,34 @@ jobs:
         #extract: true
     - name: Unzip CodeQL MISRA CPP rules
       run: |
-          unzip coding-standards-codeql-packs.zip -d codeql-packs
-          ls .
-          for tgz_file in "codeql-packs/misra-cpp-coding-standards.tgz" "codeql-packs/common-c-coding-standards.tgz"; do
-            if [ -f "$tgz_file" ]; then
-              # Extract into the same directory as the .tgz file
-              base_name=$(basename "$tgz_file" .tgz)
-              target_dir=$(dirname "$tgz_file")/$base_name
-              mkdir -p "$target_dir"
-              tar -xzf "$tgz_file" -C "$(dirname "$target_dir")"
-              echo "Found $tgz_file xxx in $target_dir."
-            else
-              echo "File $tgz_file does not exist."
-              exit 1
-            fi
-          done
-
-          echo "Contents of extracted folder:"
-          ls ./codeql-packs/misra-cpp-coding-standards
+        # Unzip the archive into the 'codeql-packs' directory
+        unzip coding-standards-codeql-packs.zip -d codeql-packs
+        echo "Contents of codeql-packs after unzip:"
+        ls codeql-packs
+    
+        # Iterate over each .tgz file
+        for tgz_file in "codeql-packs/misra-cpp-coding-standards.tgz" "codeql-packs/common-c-coding-standards.tgz"; do
+          if [ -f "$tgz_file" ]; then
+            # Determine the base name without the .tgz extension
+            base_name=$(basename "$tgz_file" .tgz)
+            # Set the target directory to extract the contents
+            target_dir=$(dirname "$tgz_file")/$base_name
+            mkdir -p "$target_dir"
+    
+            # Extract the .tgz file into the target directory
+            tar -xzf "$tgz_file" -C "$target_dir"
+    
+            echo "Successfully extracted $tgz_file into $target_dir."
+          else
+            echo "Error: File $tgz_file does not exist."
+            exit 1
+          fi
+        done
+    
+        echo "Contents of extracted folders:"
+        # List contents of all extracted directories
+        ls -R codeql-packs
+        
     - name: Set up Bazel
       uses: bazelbuild/setup-bazelisk@v3.0.0
       
