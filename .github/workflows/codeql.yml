@@ -82,7 +82,7 @@ jobs:
           done
 
           echo "Contents of extracted folder:"
-          ls codeql-packs
+          ls ./codeql-packs/misra-cpp-coding-standards
     - name: Set up Bazel
       uses: bazelbuild/setup-bazelisk@v3.0.0
       
