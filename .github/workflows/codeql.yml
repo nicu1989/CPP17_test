@@ -73,7 +73,7 @@ jobs:
               base_name=$(basename "$tgz_file" .tgz)
               target_dir=$(dirname "$tgz_file")/$base_name
               tar -xzf "$tgz_file" -C "$(dirname "$target_dir")"
-              echo "Found $tgz_file xxx."
+              echo "Found $tgz_file xxx in $target_dir."
             else
               echo "File $tgz_file does not exist."
               exit 1
