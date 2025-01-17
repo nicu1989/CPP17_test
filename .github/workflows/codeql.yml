@@ -62,8 +62,12 @@ jobs:
         repository: 'github/codeql-coding-standards'
         latest: true
         fileName: 'coding-standards-codeql-packs.zip'
-        extract: true
-      
+        #extract: true
+    - name: Unzip CodeQL MISRA CPP rules
+      run: |
+        unzip coding-standards-codeql-packs.zip \
+        "misra-cpp-coding-standards/*" \
+        "common-cpp-coding-standards/*" -d extracted
     - name: Set up Bazel
       uses: bazelbuild/setup-bazelisk@v3.0.0
       
@@ -97,8 +101,8 @@ jobs:
       with:
         category: "/language:${{matrix.language}}"
         output: sarif-results.sarif
-    - name: Upload SARIF
-      uses: github/codeql-action/upload-sarif@v3
-      with:
-        sarif_file: sarif-results.sarif
+    #- name: Upload SARIF
+    #  uses: github/codeql-action/upload-sarif@v3
+    #  with:
+    #    sarif_file: sarif-results.sarif
   
