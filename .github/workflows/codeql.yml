@@ -65,7 +65,7 @@ jobs:
         extract: true
     - name: Unzip CodeQL MISRA CPP rules
       run: |
-          for tgz_file in "coding-standards-codeql-packs/misra-cpp-coding-standards.tgz" "coding-standards-codeql-packs/common-c-coding-standards.tgz"; do
+          for tgz_file in "/home/runner/work/CPP17_test/CPP17_test/coding-standards-codeql-packs/misra-cpp-coding-standards.tgz" "/home/runner/work/CPP17_test/CPP17_test/coding-standards-codeql-packs/common-c-coding-standards.tgz"; do
             if [ -f "$tgz_file" ]; then
               # Extract into the same directory as the .tgz file
               tar -xzf "$tgz_file" -C "$(dirname "$tgz_file")"
@@ -76,7 +76,7 @@ jobs:
           done
 
           echo "Contents of extracted folder:"
-          ls -R coding-standards-codeql-packs
+          ls -R /home/runner/work/CPP17_test/CPP17_test/coding-standards-codeql-packs
     - name: Set up Bazel
       uses: bazelbuild/setup-bazelisk@v3.0.0
       
