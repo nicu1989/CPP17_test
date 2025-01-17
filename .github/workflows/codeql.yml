@@ -56,13 +56,21 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
       
+    - name: Download codeql-coding-standards
+      uses: robinraju/release-downloader@v1.11
+      with:
+        latest: true
+        fileName: 'coding-standards-codeql-packs.zip'
+        extract: true
+      
     - name: Set up Bazel
       uses: bazelbuild/setup-bazelisk@v3.0.0
+      
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v3
       with:
-        packs: advanced-security/misra-cpp-coding-standards-uncertified
+        # packs: advanced-security/misra-cpp-coding-standards-uncertified
         languages: ${{ matrix.language }}
         build-mode: ${{ matrix.build-mode }}
         # If you wish to specify custom queries, you can do so here or in a config file.
