@@ -115,6 +115,8 @@ jobs:
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
       with:
+        packs: |
+         ./codeql-packs/misra-cpp-coding-standards
         category: "/language:${{matrix.language}}"
         output: sarif-results.sarif
     #- name: Upload SARIF
