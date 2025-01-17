@@ -66,7 +66,7 @@ jobs:
     - name: Unzip CodeQL MISRA CPP rules
       run: |
           unzip coding-standards-codeql-packs.zip -d codeql-packs
-          ls -R .
+          ls .
           for tgz_file in "codeql-packs/misra-cpp-coding-standards.tgz" "codeql-packs/common-c-coding-standards.tgz"; do
             if [ -f "$tgz_file" ]; then
               # Extract into the same directory as the .tgz file
@@ -78,7 +78,7 @@ jobs:
           done
 
           echo "Contents of extracted folder:"
-          ls -R codeql-packs
+          ls codeql-packs
     - name: Set up Bazel
       uses: bazelbuild/setup-bazelisk@v3.0.0
       
@@ -89,6 +89,7 @@ jobs:
         # packs: advanced-security/misra-cpp-coding-standards-uncertified
         languages: ${{ matrix.language }}
         build-mode: ${{ matrix.build-mode }}
+        queries: "./codeql-packs/misra-cpp-coding-standards"
         # If you wish to specify custom queries, you can do so here or in a config file.
         # By default, queries listed here will override any specified in a config file.
         # Prefix the list here with "+" to use these queries and those in the config file.
