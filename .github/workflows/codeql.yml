@@ -59,6 +59,7 @@ jobs:
     - name: Download codeql-coding-standards
       uses: robinraju/release-downloader@v1.11
       with:
+        repository: 'github/codeql-coding-standards'
         latest: true
         fileName: 'coding-standards-codeql-packs.zip'
         extract: true
