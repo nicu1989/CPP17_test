@@ -72,6 +72,7 @@ jobs:
               # Extract into the same directory as the .tgz file
               base_name=$(basename "$tgz_file" .tgz)
               target_dir=$(dirname "$tgz_file")/$base_name
+              mkdir -p "$target_dir"
               tar -xzf "$tgz_file" -C "$(dirname "$target_dir")"
               echo "Found $tgz_file xxx in $target_dir."
             else
