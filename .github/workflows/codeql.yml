@@ -71,6 +71,7 @@ jobs:
             if [ -f "$tgz_file" ]; then
               # Extract into the same directory as the .tgz file
               tar -xzf "$tgz_file" -C "$(dirname "$tgz_file")"
+              echo "Found $tgz_file xxx."
             else
               echo "File $tgz_file does not exist."
               exit 1
