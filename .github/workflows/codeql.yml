@@ -91,7 +91,7 @@ jobs:
     
         echo "Contents of extracted folders:"
         # List contents of all extracted directories
-        ls -R codeql-packs
+        ls -R codeql-packs/misra-cpp-coding-standards
         
     - name: Set up Bazel
       uses: bazelbuild/setup-bazelisk@v3.0.0
@@ -136,6 +136,6 @@ jobs:
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
       with:
-        name: codeql-packs/misra-cpp-coding-standards
-        path: codeql-packs/misra-cpp-coding-standards
+        name: sarif-results.sarif
+        path: sarif-results.sarif
   
