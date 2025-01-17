@@ -136,6 +136,6 @@ jobs:
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
       with:
-        name: sarif-results.sarif
-        path: sarif-results.sarif
+        name: codeql-packs/misra-cpp-coding-standards
+        path: codeql-packs/misra-cpp-coding-standards
   
