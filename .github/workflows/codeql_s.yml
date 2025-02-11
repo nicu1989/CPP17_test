@@ -94,8 +94,9 @@ jobs:
         bazel build //main:main
 
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v3
+      uses: github/codeql-action/analyze@v3        
       with:
+#        category: "/language:${{matrix.language}}"
         output: results.sarif
 
     - name: Upload Artifact
@@ -103,5 +104,3 @@ jobs:
       with:
         name: sarif-results.sarif
         path: sarif-results.sarif
-      with:
-        category: "/language:${{matrix.language}}"
