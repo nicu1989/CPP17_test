@@ -92,7 +92,6 @@ jobs:
         echo '  make bootstrap'
         echo '  make release'
         bazel build //main:main
-        exit 1
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
