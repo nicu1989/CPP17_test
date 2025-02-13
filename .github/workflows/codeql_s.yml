@@ -100,7 +100,9 @@ jobs:
         output: sarif-results.sarif
 
     - name: Convert SARIF to HTML
-      run: npx sarif-viewer sarif-results.sarif -o report.html
+      run: |
+       npx sarif-to-html -i sarif-results.sarif -o report.html
+
 
     - name: Upload HTML Report
       uses: actions/upload-artifact@v4
