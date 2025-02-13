@@ -101,12 +101,14 @@ jobs:
 
     - name: Convert SARIF to HTML
       run: |
-       npx sarif-to-html -i sarif-results.sarif -o report.html
+       npm install -g sarif-to-html
+       sarif-to-html sarif-results.sarif > report.html
 
-
-    - name: Upload HTML Report
-      uses: actions/upload-artifact@v4
+    - name: Deploy report to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
       with:
-       name: codeql-report
-       path: report.html
+       github_token: ${{ secrets.GITHUB_TOKEN }}
+       publish_dir: ./ 
+       publish_branch: gh-pages
+
 
