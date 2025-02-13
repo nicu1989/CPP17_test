@@ -101,8 +101,8 @@ jobs:
 
     - name: Convert SARIF to HTML
       run: |
-       npm install -g sarif-to-html
-       sarif-to-html sarif-results.sarif > report.html
+       npm install -g sarif-html
+       sarif-html sarif-results.sarif > report.html
 
     - name: Deploy report to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
