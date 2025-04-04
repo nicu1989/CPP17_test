@@ -1,4 +1,4 @@
-name: gitlint
+name: gitlint CI
 on:
   pull_request:
 
