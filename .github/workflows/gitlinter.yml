@@ -3,9 +3,18 @@ on:
   pull_request:
 jobs:
   git-lint:
-    uses: nicu1989/cicd-workflows/.github/workflows/gitlint.yml@nicu1989_add_gitlint
-    with:
-      pr-number: ${{ github.event.pull_request.number }}
-      base-branch: ${{ github.event.pull_request.base.ref }}
-      gitlint-file: ".gitlint"
-      workflow-version: nicu1989_add_gitlint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      # Step 2: Run your Gitlint Docker-based action
+      - name: Lint commits
+        uses: nicu1989/cicd-workflows/.github/workflows/gitlint.yml@nicu1989_add_gitlint
+        with:
+          pr-number: ${{ github.event.pull_request.number }}
+          base-branch: ${{ github.event.pull_request.base.ref }}
+          gitlint-file: ".gitlint"
+          workflow-version: nicu1989_add_gitlint
