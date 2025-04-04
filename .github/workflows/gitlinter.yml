@@ -1,8 +1,9 @@
 name: Git Lint CI
 on:
   pull_request:
+
 jobs:
-  git-lint:
+  lint-commits:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -10,9 +11,8 @@ jobs:
         with:
           fetch-depth: 0
 
-      # Step 2: Run your Gitlint Docker-based action
       - name: Lint commits
-        uses: nicu1989/cicd-workflows/.github/workflows/gitlint.yml@nicu1989_add_gitlint
+        uses: nicu1989/cicd-workflows/.github/actions/gitlint@nicu1989_add_gitlint
         with:
           pr-number: ${{ github.event.pull_request.number }}
           base-branch: ${{ github.event.pull_request.base.ref }}
