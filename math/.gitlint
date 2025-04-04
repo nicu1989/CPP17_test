@@ -1,0 +1,18 @@
+# Ignore some default rules and enable regex style searching
+[general]
+ignore=T3,T5,B1,B5,B7
+regex-style-search=true
+
+# Maximum length of the title
+[title-max-length]
+line-length=72
+
+[title-match-regex]
+regex=^[a-z_-]+: .+$
+
+# First line of the commit message body must be empty. (second line of the commit message)
+[body-first-line-empty]
+
+#Ignores the title if it starts with Revert or Merge
+[ignore-by-title]
+regex=(^Revert |^Merge )
