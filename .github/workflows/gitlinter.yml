@@ -1,0 +1,10 @@
+name: Git Lint CI
+on:
+  pull_request:
+jobs:
+  git-lint:
+    uses: nicu1989/cicd-workflows/.github/workflows/gitlint.yml@nicu1989_add_gitlint
+    with:
+      pr-number: ${{ github.event.pull_request.number }}
+      base-branch: ${{ github.event.pull_request.base.ref }}
+      gitlint-file: ".gitlint"
