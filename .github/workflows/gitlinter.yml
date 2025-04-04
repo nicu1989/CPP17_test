@@ -8,5 +8,5 @@ jobs:
     with:
       pr-number: ${{ github.event.pull_request.number }}
       base-branch: ${{ github.event.pull_request.base.ref }}
-      gitlint-file: ".gitlint"
+      gitlint-file: "./math/.gitlint"
       workflow-version: nicu1989_add_gitlint
